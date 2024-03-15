@@ -1,0 +1,124 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.main{
+  position: relative;
+}
+.activity{
+  display: inline-block;
+}
+.activity .recharts-legend-wrapper{
+top:0px !important;
+font-size: 14px;
+}
+.activity .recharts-cartesian-axis-line{
+stroke: none;
+}
+.activity .recharts-cartesian-axis-tick-line{
+  display:none;
+}
+.activity .recharts-cartesian-axis-tick-value{
+  transform: translateY(10px) !important;
+}
+.activity .recharts-legend-item-text{
+  color: #74798C !important;
+}
+.activity .recharts-default-legend{
+    position: relative;
+    top: -20px;
+    left: -20px;
+}
+.comp_title{
+  margin: 0px;
+    position: relative;
+    font-weight: 500;
+}
+.activity_custom-tooltip{
+  background-color: #E60000;
+  padding:10px 15px;
+  color:white;
+}
+.session_custom-tooltip{
+  background-color: white;
+  padding:1px 10px;
+  color:black;
+}
+.xAxis tspan{
+  color:green !important;
+}
+
+.session .recharts-yAxis{
+  display: none;
+}
+.session .recharts-cartesian-axis-tick-line, .session .recharts-cartesian-axis-line{
+  display: none;
+}
+.session .recharts-wrapper{
+  background-color: #E60000;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+.session .recharts-surface{
+  transform: scaleX(1) translateX(-25px);
+}
+.session .recharts-line-dots circle{
+  display: none;
+}
+.session .title {
+  color: white;
+  margin: 0px;
+  position: relative;
+  top: 75px;
+  left: 25px;
+  z-index: 5;
+  opacity: 50%;
+  display: inline;
+}
+
+.performance .recharts-wrapper{
+  background-color: #282D30;
+  border-radius: 10px;
+  padding: 10px;
+}
+.performance text{
+  text-transform: capitalize;
+  font-size: x-small;
+}

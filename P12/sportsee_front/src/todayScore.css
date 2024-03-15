@@ -1,0 +1,42 @@
+.todayScore h1 span {
+  color: #E60000;
+}
+.scoreChart{
+  width: 400px;
+position: relative;
+}
+.score_number{
+  display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 150px;
+    left: 140px;
+}
+.score_number .number{
+font-weight: bold;
+    font-size: xxx-large;
+}
+.score_number .text{
+  font-size: x-large;
+}
+
+.value_main{
+  display: flex;
+}
+.value_img{
+  width:60px !important;
+  max-height: 60px !important;
+}
+.value_number{
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.value_number .title{
+  font-weight: bold;
+  font-size: x-large;
+}
+
+    

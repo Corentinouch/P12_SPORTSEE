@@ -1,0 +1,221 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import UserActivityComponent from './UserActivityComponent';
+import UserAverageSessionsComponent from './UserAverageSessionsComponent';
+//import UserPerformanceComponent from './UserPerformanceComponent';
+
+const App = () => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const userId = 12;
+    axios.get(`http://localhost:3002/user/${userId}`)
+      .then(response => {
+        setUserData(response.data.data);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données d\'activité :', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {userData ? (
+        <div>
+          <h2>{userData.userInfos.firstName} {userData.userInfos.lastName}</h2>
+          <p>Age: {userData.userInfos.age}</p>
+          <p>Score aujourd'hui: {userData.todayScore}</p>
+          <p>{userData.keyData.calorieCount}</p>
+          <p>{userData.keyData.proteinCount}</p>
+          <p>{userData.keyData.carbohydrateCount}</p>
+          <p>{userData.keyData.lipidCount}</p>
+        </div>
+      ) : (
+        <p>Chargement des données...</p>
+      )}
+      <UserActivityComponent />
+      <UserAverageSessionsComponent />
+    </div>
+  );
+};
+
+export default App;
+
+
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const UserActivityComponent = () => {
+  const [userActivity, setUserActivity] = useState(null);
+
+  useEffect(() => {
+    const userId = 18; // ID de l'utilisateur pour lequel tu veux récupérer les données d'activité
+
+    // Appel pour récupérer les données d'activité de l'utilisateur
+    axios.get(`http://localhost:3002/user/${userId}/activity`)
+      .then(response => {
+        setUserActivity(response.data.data); // Met à jour l'état avec les données reçues
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données d\'activité :', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {userActivity ? (
+        <div>
+          <h2>Activité de l'utilisateur</h2>
+          {/* Afficher les données d'activité ici */}
+          <ul>
+            {userActivity.sessions.map((session, index) => (
+              <li key={index}>
+                Date: {session.day}, Kilogram: {session.kilogram}, Calories: {session.calories}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>Chargement des données........</p>
+      )}
+    </div>
+  );
+};
+
+export default UserActivityComponent;
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const UserActivityComponent = () => {
+  const [userActivity, setUserActivity] = useState(null);
+
+  useEffect(() => {
+    const userId = 18; // ID de l'utilisateur pour lequel tu veux récupérer les données d'activité
+
+    // Appel pour récupérer les données d'activité de l'utilisateur
+    axios.get(`http://localhost:3002/user/${userId}/activity`)
+      .then(response => {
+        setUserActivity(response.data.data); // Met à jour l'état avec les données reçues
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données d\'activité :', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {userActivity ? (
+        <div>
+          <h2>Activité de l'utilisateur</h2>
+          {/* Afficher les données d'activité ici */}
+          <ul>
+            {userActivity.sessions.map((session, index) => (
+              <li key={index}>
+                Date: {session.day}, Kilogram: {session.kilogram}, Calories: {session.calories}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>Chargement des données........</p>
+      )}
+    </div>
+  );
+};
+
+export default UserActivityComponent;
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const UserPerformanceComponent = () => {
+  const [userPerformance, setUserPerformance] = useState(null);
+
+  useEffect(() => {
+    const userId = 12; // Tu peux ajuster l'ID de l'utilisateur selon tes besoins
+
+    // Appel pour récupérer les données de USER_PERFORMANCE
+    axios.get(`http://localhost:3002/user/${userId}/performance`)
+      .then(response => {
+        setUserPerformance(response.data.data); // Met à jour l'état avec les données reçues
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données de performance :', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {Array.isArray(userPerformance) && userPerformance.length > 0 ? (
+        <div>
+          <h2>Performance de l'utilisateur</h2>
+          {userPerformance.map((userData, index) => (
+            <div key={index}>
+              <h3>User ID: {userData.userId}</h3>
+              <ul>
+                {Object.values(userData.kind).map((kind, idx) => (
+                  <li key={idx}>{kind}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Chargement des données...</p>
+      )}
+    </div>
+  );
+};
+
+export default UserPerformanceComponent;
+
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const UserAverageSessionsComponent = () => {
+  const [userAverageSessions, setUserAverageSessions] = useState(null);
+
+  useEffect(() => {
+    const userId = 12; // Tu peux ajuster l'ID de l'utilisateur selon tes besoins
+
+    // Appel pour récupérer les données de la troisième série (USER_AVERAGE_SESSIONS)
+    axios.get(`http://localhost:3002/user/${userId}/average-sessions`)
+      .then(response => {
+        setUserAverageSessions(response.data.data); // Met à jour l'état avec les données reçues
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des données des sessions moyennes :', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {userAverageSessions ? (
+        <div>
+          <h2>Sessions moyennes de l'utilisateur</h2>
+          <ul>
+            {userAverageSessions.sessions.map((session, index) => (
+              <li key={index}>
+                Jour {session.day}: Durée de session {session.sessionLength} minutes
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>Chargement des données...</p>
+      )}
+    </div>
+  );
+};
+
+export default UserAverageSessionsComponent;
