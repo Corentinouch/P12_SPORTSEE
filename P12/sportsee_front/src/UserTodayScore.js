@@ -11,13 +11,13 @@ fetchTodayScore(userId, setUserData);
   }, [userId]);
 
     if (!userData) {
-    return <p>Chargement des données...</p>;
+    return null
   }
   return (
     <div className='todayScore chart'>
       {userData ? (
           <div className="scoreChart">
-              <RadialBarChart width={400} height={400}innerRadius="85%" outerRadius="100%" startAngle={180} endAngle={180-userData.todayScore*360} data={[{value: userData.todayScore *100 }]} cornerRadius={10}>
+              <RadialBarChart width={250} height={250} innerRadius="85%" outerRadius="100%" startAngle={180} endAngle={180-userData.todayScore*360} data={[{value: userData.todayScore *100 }]} cornerRadius={10}>
                 <RadialBar isAnimationActive={true} minAngle={15} dataKey="value" cornerRadius={20} fill="#E60000"/>
               </RadialBarChart>
             <div className='score_number'>
@@ -26,7 +26,7 @@ fetchTodayScore(userId, setUserData);
             </div>
           </div>
       ) : (
-        <p>Chargement des données...</p>
+        <p>Serveur de l'API non démarré</p>
       )}
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTodayScore } from './api';
 import { RadialBarChart, RadialBar } from 'recharts';
-import calorie from './calories-icon.png'
-import carb from './carbs-icon.png'
-import fat from './fat-icon.png'
-import protein from './protein-icon.png'
+import calorie from './asset/calories-icon.png'
+import carb from './asset/carbs-icon.png'
+import fat from './asset/fat-icon.png'
+import protein from './asset/protein-icon.png'
 import './todayScore.css'
 
 const App = ({ userId }) => {
@@ -15,7 +15,7 @@ fetchTodayScore(userId, setUserData);
   }, [userId]);
 
     if (!userData) {
-    return <p>Chargement des données...</p>;
+    return <p className='error_msg'>Error: serveur de l'API non démarré</p>
   }
   return (
     <div className='todayScore value'>
@@ -51,7 +51,7 @@ fetchTodayScore(userId, setUserData);
             </div>
           </div>
       ) : (
-        <p>Chargement des données...</p>
+        <p>Serveur de l'API non démarré</p>
       )}
     </div>
   );

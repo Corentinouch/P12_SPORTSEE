@@ -10,7 +10,7 @@ fetchTodayScore(userId, setUserData);
   }, [userId]);
 
     if (!userData) {
-    return <p>Chargement des données...</p>;
+    return null
   }
   return (
     <div className='todayScore name'>
@@ -20,7 +20,7 @@ fetchTodayScore(userId, setUserData);
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </div>
       ) : (
-        <p>Chargement des données...</p>
+        <p>Serveur de l'API non démarré</p>
       )}
     </div>
   );

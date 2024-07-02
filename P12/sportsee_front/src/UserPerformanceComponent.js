@@ -10,7 +10,7 @@ const UserPerformanceRadar = ({ userId }) => {
   }, [userId]);
 
   if (!userPerformance) {
-    return <p>Chargement des données...</p>;
+    return null
   }
 
   const getKindName = (kindValue) => {
@@ -27,12 +27,14 @@ const UserPerformanceRadar = ({ userId }) => {
 
   return (
     <div className='performance'>
-      <RadarChart width={400} height={400} data={radarData}>
+      <div className="scoreChart">
+      <RadarChart width={300} height={300} data={radarData}>
         <PolarGrid radialLines={false} polarRadius={[15, 30, 75, 100, 150]}/>
         <PolarRadiusAxis axisLine={false} tick={false}domain={[minSessionLength-50, maxSessionLength + 100 ]}/>
         <PolarAngleAxis dataKey="kind" tick={{ fill: "white", fontSize: 15 }}/>
         <Radar name="Performance" dataKey="value" stroke="#E60000" fill="#E60000" fillOpacity={0.6} />
       </RadarChart>
+      </div>
     </div>
   );
 };

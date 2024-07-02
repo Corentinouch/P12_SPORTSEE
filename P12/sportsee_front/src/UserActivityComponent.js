@@ -10,7 +10,7 @@ const UserActivityComponent = ({userId}) => {
   }, [userId]);
 
   if (!userActivity) {
-    return <p>Chargement des données...</p>;
+    return null
   }
 
   const formattedData = userActivity.sessions.map(session => ({
@@ -35,25 +35,28 @@ const UserActivityComponent = ({userId}) => {
     return null;
   };
   return (
-    <div className='activity'>
-      <p className="comp_title">Activité de l'utilisateur</p>
-      <BarChart
-        width={835}
-        height={320}
-        data={formattedData}
-        margin={{ top: 20, right: 0, left: 0, bottom: 15 }}
-        barGap={0}
-        barCategoryGap={30}
-      >
-        <CartesianGrid strokeDasharray="3 3" vertical={false}/>
-        <XAxis dataKey="day" padding={{ left: 0, right: 0 }}/>
-        <YAxis orientation='right' type="number" domain={[0, 1]} tickFormatter={(value) => `${value /2}`}/>
-        <Tooltip content={<CustomTooltip />} />
-        <Legend iconSize="8" iconType="circle" verticalAlign="top" align="right" height={14}/>
-        <Bar radius={[20, 20, 0, 0]} maxBarSize={10}  dataKey="kilogram" fill="#000" name="Poids (Kg)" />
-        <Bar radius={[20, 20, 0, 0]} maxBarSize={10} dataKey="calories" fill="#E60000" name="Calories brûlées (kCal)" />
-      </BarChart>
-    </div>
+      <div className='activity'>
+        <div className="activityChart">
+        <p className="comp_title">Activité de l'utilisateur</p>
+        <BarChart
+            width={835}
+            height={250}
+            data={formattedData}
+            margin={{top: 20, right: 0, left: 0, bottom: 15}}
+            barGap={0}
+            barCategoryGap={30}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false}/>
+          <XAxis dataKey="day" padding={{left: 0, right: 0}}/>
+          <YAxis orientation='right' type="number" domain={[0, 1]} tickFormatter={(value) => `${value / 2}`}/>
+          <Tooltip content={<CustomTooltip/>}/>
+          <Legend iconSize="8" iconType="circle" verticalAlign="top" align="right" height={14}/>
+          <Bar radius={[20, 20, 0, 0]} maxBarSize={10} dataKey="kilogram" fill="#000" name="Poids (Kg)"/>
+          <Bar radius={[20, 20, 0, 0]} maxBarSize={10} dataKey="calories" fill="#E60000"
+               name="Calories brûlées (kCal)"/>
+        </BarChart>
+        </div>
+      </div>
   );
 };
 

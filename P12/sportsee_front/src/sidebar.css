@@ -16,3 +16,8 @@
     display: grid;
     justify-items: center;
 }
+.sidebar span {
+    transform: rotate(-90deg);
+    display: inline;
+    text-wrap: nowrap;
+}

@@ -13,9 +13,10 @@ import './App.css'
 const App = () => {
   const user = 18
   return (
-    <div>
+    <div className="page">
       <Header />
       <Sidebar />
+      <div className='container-main'>
       <div className="main">
       <UserTodayScore userId={user}/>
       <UserTodayScoreName userId={user}/>
@@ -24,7 +25,7 @@ const App = () => {
       <UserAverageSessionsComponent userId={user}/>
       <UserPerformanceComponent userId={user}/>
       </div>
-      
+      </div>
     </div>
   );
 };

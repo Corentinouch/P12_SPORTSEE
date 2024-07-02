@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchUserSession } from './api';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const UserAverageSessionsComponent = ({ userId }) => {
   const [userAverageSessions, setUserAverageSessions] = useState(null);
@@ -10,7 +10,7 @@ const UserAverageSessionsComponent = ({ userId }) => {
   }, [userId]);
 
   if (!userAverageSessions) {
-    return <p>Chargement des données...</p>;
+    return null
   }
 
   const formattedData = userAverageSessions.sessions.map(session => ({
@@ -45,10 +45,11 @@ const UserAverageSessionsComponent = ({ userId }) => {
   };
   return (
     <div className='session'>
+      <div className="scoreChart">
       <p className='title'>Durée moyenne des <br></br>sessions</p>
       <LineChart
-        width={400}
-        height={400}
+        width={300}
+        height={300}
         data={formattedData}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="0 0" vertical={false} horizontal={false} />
@@ -57,6 +58,7 @@ const UserAverageSessionsComponent = ({ userId }) => {
         <Tooltip content={<CustomTooltip/>}/>
         <Line type="monotone" dataKey="sessionLength" stroke="#FFF" />
       </LineChart>
+      </div>
     </div>
   );
 };
