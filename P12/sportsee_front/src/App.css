@@ -75,6 +75,10 @@
 .activityChart{
   flex-direction: column;
   align-items: flex-start;
+  background: #fafafa;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 .main .name{
@@ -90,6 +94,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background: #fafafa;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
 }
 .activity{
   grid-column: 1/4;

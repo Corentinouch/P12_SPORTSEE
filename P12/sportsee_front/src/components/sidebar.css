@@ -1,0 +1,23 @@
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 100px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+}
+.sidebar img {
+    margin: 20px 0px;
+    max-height: none;
+}
+.sidebar nav{
+    display: grid;
+    justify-items: center;
+}
+.sidebar span {
+    transform: rotate(-90deg);
+    display: inline;
+    text-wrap: nowrap;
+}
